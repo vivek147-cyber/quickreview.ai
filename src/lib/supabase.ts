@@ -1,11 +1,9 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "";
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "";
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  console.warn("Supabase URL or anon key is missing. Check .env.local.");
-}
+// Fallback to a valid-format placeholder during build time so the Supabase SDK
+// doesn't throw "supabaseUrl is required" when env vars aren't injected yet.
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || "https://placeholder.supabase.co";
+const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || "placeholder_anon_key";
 
 export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey);
 
