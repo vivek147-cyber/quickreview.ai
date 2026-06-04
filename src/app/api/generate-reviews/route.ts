@@ -12,6 +12,15 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 });
     }
 
+    // Demo restaurant — return fallback reviews immediately, no Groq call
+    if (restaurantId === DEMO_RESTAURANT_ID) {
+      const { reviews } = await generateReviewOptions(
+        { restaurantName, restaurantCategory: restaurantCategory || "Business", rating, selectedLabels },
+        "" // empty key forces fallback
+      );
+      return NextResponse.json({ reviews });
+    }
+
     const service = createServiceClient();
 
     // Fetch Groq API key set by superadmin in /superadmin/config (falls back to env var)
@@ -21,14 +30,10 @@ export async function POST(req: Request) {
       .eq("key", "groq_settings")
       .maybeSingle();
 
-    // Demo restaurant always uses fallback reviews — no AI call
-    const isDemo = restaurantId === DEMO_RESTAURANT_ID;
-
-    const apiKey = isDemo
-      ? ""
-      : (configData?.value as { api_key?: string } | null)?.api_key ||
-        process.env.GROQ_API_KEY ||
-        "";
+    const apiKey =
+      (configData?.value as { api_key?: string } | null)?.api_key ||
+      process.env.GROQ_API_KEY ||
+      "";
 
     const { reviews, usage } = await generateReviewOptions(
       {
