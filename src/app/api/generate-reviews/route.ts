@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { generateReviewOptions } from "@/lib/groq";
 import { createServiceClient } from "@/lib/supabase";
+import { DEMO_RESTAURANT_ID } from "@/lib/constants";
 
 export async function POST(req: Request) {
   try {
@@ -20,10 +21,14 @@ export async function POST(req: Request) {
       .eq("key", "groq_settings")
       .maybeSingle();
 
-    const apiKey =
-      (configData?.value as { api_key?: string } | null)?.api_key ||
-      process.env.GROQ_API_KEY ||
-      "";
+    // Demo restaurant always uses fallback reviews — no AI call
+    const isDemo = restaurantId === DEMO_RESTAURANT_ID;
+
+    const apiKey = isDemo
+      ? ""
+      : (configData?.value as { api_key?: string } | null)?.api_key ||
+        process.env.GROQ_API_KEY ||
+        "";
 
     const { reviews, usage } = await generateReviewOptions(
       {
