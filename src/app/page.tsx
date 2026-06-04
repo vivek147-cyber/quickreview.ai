@@ -206,16 +206,16 @@ function PhoneDemo() {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const FEATURES = [
-  { icon: QrCode, title: "Branded QR Codes", desc: "Print-ready codes with your logo and colors. Per-table scan tracking included." },
+  { icon: QrCode, title: "Branded QR Codes", desc: "Print-ready codes with your logo and colors. Place them anywhere — counter, table, receipt, packaging." },
   { icon: Brain, title: "AI Review Writing", desc: "Writes 4 natural, authentic review options in under 2 seconds. Customers just pick one." },
   { icon: MessageSquareHeart, title: "One-Tap to Google", desc: "Review is auto-copied. Google Maps opens directly to your listing. Customer just pastes." },
   { icon: BarChart3, title: "Smart Analytics", desc: "Track ratings, completion rate, label trends, and review velocity in real time." },
   { icon: Zap, title: "47-Second Flow", desc: "No app download. No account creation. Scan → review → posted in under a minute." },
-  { icon: Shield, title: "Reputation Guard", desc: "4★+ reviews go to Google. Lower ratings stay private for internal team feedback only." },
+  { icon: Shield, title: "Reputation Guard", desc: "4★+ reviews go to Google. Lower ratings stay private for your team only — protect your reputation." },
 ];
 
 const PAIN_POINTS = [
-  { bad: "Customers forget to review by the time they get home", good: "QR at the table captures the moment while the experience is fresh" },
+  { bad: "Customers forget to review by the time they get home", good: "QR at the point of experience captures the moment while the feeling is fresh" },
   { bad: "Most customers have no idea what to write on Google", good: "AI writes 4 options tailored to their rating. They just pick and post." },
   { bad: "WhatsApp review blasts feel spammy and get ignored", good: "Customer-initiated, in-person flow. No opt-ins, no spam, zero push." },
 ];
@@ -283,19 +283,19 @@ export default function LandingPage() {
         <div className="relative max-w-5xl mx-auto px-6 pt-24 pb-28 text-center">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }}>
             <span className="badge-orange mb-8 inline-flex">
-              <Zap size={11} /> AI-powered · Built for restaurants
+              <Zap size={11} /> AI-powered · Works for any local business
             </span>
 
             <h1 className="text-6xl md:text-8xl font-black tracking-tighter leading-[0.9] text-gray-900 mb-6">
               Turn Every Happy<br />
-              Diner Into a{" "}
+              Customer Into a{" "}
               <span className="text-orange-gradient">5-Star</span>
               <br />Review.
             </h1>
 
             <p className="text-lg md:text-xl text-gray-500 max-w-xl mx-auto mb-10 leading-relaxed font-normal">
               Customer scans your QR, picks a rating, and AI writes their Google review.
-              Copied and posted in under 60 seconds.
+              Copied and posted in under 60 seconds. No app needed.
             </p>
           </motion.div>
 
@@ -340,7 +340,7 @@ export default function LandingPage() {
               Getting reviews shouldn&apos;t<br className="hidden md:block" /> feel like begging.
             </h2>
             <p className="text-gray-500 text-base max-w-md mx-auto leading-relaxed">
-              Most restaurants leave reviews to chance. QuikReview makes it a repeatable system.
+              Most businesses leave reviews to chance. QuikReview makes it a repeatable system.
             </p>
           </div>
 
@@ -375,7 +375,7 @@ export default function LandingPage() {
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { n: "01", icon: QrCode, t: "Scan QR", d: "Customer scans the code at the table. No app, no login." },
+              { n: "01", icon: QrCode, t: "Scan QR", d: "Customer scans the code at your counter, table, or door. No app, no login." },
               { n: "02", icon: Star, t: "Rate & Tag", d: "Taps a star rating and picks what they loved." },
               { n: "03", icon: Brain, t: "AI Writes", d: "AI generates 4 natural review options in 2 seconds." },
               { n: "04", icon: MessageSquareHeart, t: "Post to Google", d: "Copies and posts directly on Google Maps." },
@@ -431,7 +431,7 @@ export default function LandingPage() {
             <h2 className="text-4xl md:text-5xl font-black tracking-tight text-gray-900 leading-tight mb-4">
               Everything you need.<br className="hidden md:block" /> Nothing you don&apos;t.
             </h2>
-            <p className="text-gray-500 text-base max-w-sm mx-auto">Built specifically for restaurants. Not a generic SaaS.</p>
+            <p className="text-gray-500 text-base max-w-sm mx-auto">Restaurants, salons, clinics, hotels, retail — any business with walk-in customers.</p>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
